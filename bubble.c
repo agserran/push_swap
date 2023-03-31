@@ -25,3 +25,27 @@ int	*bubble(int *stack, int size)
 	return(stack);
 }
 
+int *sorter(int *stack, int *bubble, int size)
+{
+    int i;
+    int *sorted;
+    int j;
+
+    i = 0;
+    sorted = ft_calloc(sizeof(int), size);
+    while (i < size)
+    {
+        j = 0;
+        while (j < size)
+        {
+            if (stack[i] == bubble[j])
+            {
+                sorted[i] = j;
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+    return (sorted);
+}

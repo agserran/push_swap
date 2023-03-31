@@ -52,16 +52,14 @@ void	numcheck(int argc, char **argv)
 	}
 }
 
-int	*toint(char **splited)
+int	*toint(char **splited, int size)
 {
-	int	aux;
 	int	*stored;
 	int	i;
 
 	i = 0;
-	aux = nr(splited);
-	stored = ft_calloc(sizeof(int), aux);
-	while(i < aux)
+	stored = ft_calloc(sizeof(int), size);
+	while(i < size)
 	{
 		stored[i] = ft_atoi(splited[i]);
 		i++;
@@ -71,7 +69,11 @@ int	*toint(char **splited)
 
 int     main(int argc, char **argv)
 {
-	bubble(toint(joiner(argc, argv)), nr(joiner(argc,argv)));
+	char	**aux = joiner(argc, argv);
+	int	size = nr(aux);
+	int	*b = toint(aux, size);
+	int	*c = bubble(b, size);
+	sorter(toint(aux, size), bubble(b, size), size);
         return 0;
 }
 
