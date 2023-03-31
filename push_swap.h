@@ -17,5 +17,8 @@ void	*ft_calloc(size_t size, size_t count);
 int     ft_isdigit(char c);
 void	numcheck(int argc, char **argv);
 char	**joiner(int argc, char **argv);
+int     ft_atoi(const char *str);
+int	nr(char **splited);
+int	*bubble(int *stack, int	size);
 
 #endif

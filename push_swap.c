@@ -18,6 +18,16 @@ char **joiner(int argc, char **argv)
 	return (splited);
 }
 
+int	nr(char **splited)
+{
+	int	i;
+
+	i = 0;
+	while(splited[i])
+		i++;
+	return (i);
+}
+
 void	numcheck(int argc, char **argv)
 {
 	char	**aux;
@@ -42,8 +52,26 @@ void	numcheck(int argc, char **argv)
 	}
 }
 
-int main(int argc, char **argv)
+int	*toint(char **splited)
 {
-	numcheck(argc, argv);
-	return 0;
+	int	aux;
+	int	*stored;
+	int	i;
+
+	i = 0;
+	aux = nr(splited);
+	stored = ft_calloc(sizeof(int), aux);
+	while(i < aux)
+	{
+		stored[i] = ft_atoi(splited[i]);
+		i++;
+	}
+	return (stored);
 }
+
+int     main(int argc, char **argv)
+{
+	bubble(toint(joiner(argc, argv)), nr(joiner(argc,argv)));
+        return 0;
+}
+

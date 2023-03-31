@@ -63,3 +63,32 @@ int	ft_isdigit(char c)
 	else
 		return (0);
 }
+
+
+int	ft_atoi(const char *str)
+{
+	int	a;
+	int	sign;
+	int	num;
+
+	num = 0;
+	sign = 0;
+	a = 0;
+	while (str[a] == '\t' || str[a] == '\n' || str[a] == '\v'
+		|| str[a] == '\f' || str[a] == '\r' || str[a] == ' ')
+		a++;
+	if (str[a] == '+' || str[a] == '-')
+	{
+		if (str[a] == '-')
+			sign++;
+		a++;
+	}
+	while (str[a] != '\0' && str[a] >= '0' && str[a] <= '9')
+	{
+		num = num * 10 + str[a] - 48;
+		a++;
+	}
+	if (sign % 2 != 0)
+		num = num * -1;
+	return (num);
+}
