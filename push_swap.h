@@ -20,5 +20,7 @@ char	**joiner(int argc, char **argv);
 int     ft_atoi(const char *str);
 int	nr(char **splited);
 int	*bubble(int *stack, int	size);
+int	*sorter(int *stack, int*bubble, int size);
+void	repcheck(int *sorted, int size);
 
 #endif

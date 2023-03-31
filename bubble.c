@@ -49,3 +49,31 @@ int *sorter(int *stack, int *bubble, int size)
     }
     return (sorted);
 }
+
+void	repcheck(int *sorted, int size)
+{
+	int	num;
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	j = 0;
+	while(i < size)
+	{
+		num = sorted[i];
+		count = 0;
+		while(j < size)
+		{
+			if (num == sorted[j])
+				count++;
+			if (count > 1)
+			{
+				ft_putstr("Numbers cannot repeat.\n");
+				exit(1);
+			}
+			j++;	
+		}
+		i++;
+	}
+}

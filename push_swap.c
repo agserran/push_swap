@@ -73,7 +73,8 @@ int     main(int argc, char **argv)
 	int	size = nr(aux);
 	int	*b = toint(aux, size);
 	int	*c = bubble(b, size);
-	sorter(toint(aux, size), bubble(b, size), size);
+	/*sorter(toint(aux, size), bubble(b, size), size);*/
+	repcheck(c, size);
         return 0;
 }
 
