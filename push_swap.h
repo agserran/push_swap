@@ -18,6 +18,7 @@ typedef struct s_things
 {
     int     size_a;
     int     size_b;
+    int     size;
 } t_things;
 
 char    **ft_split(char const *s, char c);

@@ -51,13 +51,13 @@ void    radix(t_list **stack_a, t_list **stack_b, t_things *aux)
     int i;
     int j;
     int num;
-    aux->size_a = ft_lstsize(*stack_a);
+    aux->size= ft_lstsize(*stack_a);
 
     i = -1;
     while (++i < max_bits(*stack_a))
     {
         j = -1;
-        while(++j < aux->size_a)
+        while(++j < aux->size)
         {
             num = (*stack_a)->content;
 
