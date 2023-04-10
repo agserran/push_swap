@@ -1,4 +1,4 @@
-#include "push_swap.h"
+  #include "push_swap.h"
 
 char **joiner(int argc, char **argv)
 {
@@ -73,8 +73,8 @@ int     main(int argc, char **argv)
 	int	size = nr(aux);
 	int	*b = toint(aux, size);
 	int	*c = bubble(b, size);
-	/*sorter(toint(aux, size), bubble(b, size), size);*/
+	int *x = sorter(toint(aux, size), bubble(b, size), size);
 	repcheck(c, size);
-        return 0;
+	return 0;
 }
 
