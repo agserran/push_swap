@@ -58,7 +58,7 @@ int	*toint(char **splited, int size)
 	int	i;
 
 	i = 0;
-	stored = ft_calloc(sizeof(int), size);
+	stored = malloc(sizeof(int)*size);
 	while(i < size)
 	{
 		stored[i] = ft_atoi(splited[i]);
@@ -69,12 +69,23 @@ int	*toint(char **splited, int size)
 
 int     main(int argc, char **argv)
 {
+	t_list		*stack_a;
+	t_list		*stack_b;
+	t_things	things;
+
+	things.size_b = 0;
 	char	**aux = joiner(argc, argv);
 	int	size = nr(aux);
 	int	*b = toint(aux, size);
 	int	*c = bubble(b, size);
 	int *x = sorter(toint(aux, size), bubble(b, size), size);
-	repcheck(c, size);
+	stack_a = create_stack_a(size, x, stack_a);
+
+	printf("LISTA_ANTES\n");
+	ft_print_lst(stack_a);
+	radix(&stack_a, &stack_b, &things);
+	printf("LISTA_DESPUES\n");
+	ft_print_lst(stack_a);
 	return 0;
 }
 
