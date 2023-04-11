@@ -6,16 +6,16 @@
 /*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:57:49 by agserran          #+#    #+#             */
-/*   Updated: 2023/04/11 17:57:51 by agserran         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:35:01 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int      strc(const char *s, char c)
+static int	strc(const char *s, char c)
 {
-	int     i;
-	int     cstr;
+	int		i;
+	int		cstr;
 
 	i = 0;
 	cstr = 0;
@@ -32,10 +32,10 @@ static int      strc(const char *s, char c)
 	return (cstr);
 }
 
-static char     *mr(const char *s, char c)
+static char	*mr(const char *s, char c)
 {
-	int             i;
-	char    *memory;
+	int		i;
+	char	*memory;
 
 	i = 0;
 	while (s[i] != c && s[i])
@@ -54,11 +54,11 @@ static char     *mr(const char *s, char c)
 	return (memory);
 }
 
-char    **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	int             co;
-	int             st;
-	char    **memory;
+	int		co;
+	int		st;
+	char	**memory;
 
 	co = 0;
 	if (!s)

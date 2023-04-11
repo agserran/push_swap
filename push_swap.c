@@ -6,21 +6,21 @@
 /*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:57:23 by agserran          #+#    #+#             */
-/*   Updated: 2023/04/11 17:57:25 by agserran         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:14:51 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-  #include "push_swap.h"
+#include "push_swap.h"
 
-char **joiner(int argc, char **argv)
+char	**joiner(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	char	*aux;
 	char	**splited;
 
 	i = 1;
-	aux = ft_calloc(1,1);
-	while(i < argc)
+	aux = ft_calloc(1, 1);
+	while (i < argc)
 	{
 		aux = ft_strjoin(aux, argv[i]);
 		aux = ft_strjoin(aux, " ");
@@ -30,28 +30,29 @@ char **joiner(int argc, char **argv)
 	free(aux);
 	return (splited);
 }
+
 char	*checkeraux(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	char	*aux;
-	char	**splited;
 
 	i = 1;
-	aux = ft_calloc(1,1);
-	while(i < argc)
+	aux = ft_calloc(1, 1);
+	while (i < argc)
 	{
 		aux = ft_strjoin(aux, argv[i]);
 		aux = ft_strjoin(aux, " ");
 		i++;
 	}
-	return(aux);
+	return (aux);
 }
+
 int	nr(char **splited)
 {
 	int	i;
 
 	i = 0;
-	while(splited[i])
+	while (splited[i])
 		i++;
 	return (i);
 }
@@ -85,35 +86,11 @@ int	*toint(char **splited, int size)
 	int	i;
 
 	i = 0;
-	stored = malloc(sizeof(int)*size);
-	while(i < size)
+	stored = malloc(sizeof(int) * size);
+	while (i < size)
 	{
 		stored[i] = ft_atoi(splited[i]);
 		i++;
 	}
 	return (stored);
 }
-
-int     main(int argc, char **argv)
-{
-	t_list		*stack_a;
-	t_list		*stack_b;
-	t_things	things;
-
-	things.size_b = 0;
-	char	**aux = joiner(argc, argv);
-	int	size = nr(aux);
-	int	*b = toint(aux, size);
-	int	*c = bubble(b, size);
-	int *x = sorter(toint(aux, size), bubble(b, size), size);
-	stack_a = create_stack_a(size, x, stack_a);
-	
-	char	*prueba = checkeraux(argc, argv);
-	lettercheck(prueba);
-	num_check(sorter(toint(aux, size), bubble(b, size), size), size);
-	choose_algorithm(size, &stack_a, &stack_b, &things);
-
-	system("leaks a.out");
-	return 0;
-}
-

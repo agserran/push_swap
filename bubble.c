@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 int	*bubble(int *stack, int size)
 {
 	int	temp;
@@ -84,4 +86,5 @@ void	num_check(int *arr, int size)
 		back_check(arr, arr[i], i);
 		i++;
 	}
+	free(arr);
 }

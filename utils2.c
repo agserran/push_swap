@@ -6,7 +6,7 @@
 /*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:57:53 by agserran          #+#    #+#             */
-/*   Updated: 2023/04/11 17:57:54 by agserran         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:33:04 by agserran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	ft_isdigit(char c)
 	else
 		return (0);
 }
-
 
 int	ft_atoi(const char *str)
 {
