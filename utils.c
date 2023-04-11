@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/11 17:57:49 by agserran          #+#    #+#             */
+/*   Updated: 2023/04/11 17:57:51 by agserran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int      strc(const char *s, char c)
@@ -72,5 +84,5 @@ char    **ft_split(char const *s, char c)
 
 void	ft_putstr(char *s)
 {
-	write(1, s, ft_strlen(s));
+	write(2, s, ft_strlen(s));
 }

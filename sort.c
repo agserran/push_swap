@@ -1,72 +1,111 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/11 17:57:41 by agserran          #+#    #+#             */
+/*   Updated: 2023/04/11 17:57:42 by agserran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    sort3(t_list **stack_a)
 {
-    if((locate_num(*stack_a, find_min(*stack_a)) == 1) && ((locate_num(*stack_a, find_max(*stack_a)) == 2)))
-        sa(stack_a);
-    if((locate_num(*stack_a, find_min(*stack_a)) == 2) && ((locate_num(*stack_a, find_max(*stack_a)) == 0)))
-        {
-            sa(stack_a);
-            rra(stack_a);
-        }
-    if((locate_num(*stack_a, find_min(*stack_a)) == 1) && ((locate_num(*stack_a, find_max(*stack_a)) == 0)))
-        ra(stack_a);
-    if((locate_num(*stack_a, find_min(*stack_a)) == 0) && ((locate_num(*stack_a, find_max(*stack_a)) == 1)))
-        {
-            sa(stack_a);
-            ra(stack_a);
-        }
-    if((locate_num(*stack_a, find_min(*stack_a)) == 2) && ((locate_num(*stack_a, find_max(*stack_a)) == 1)))
-        rra(stack_a);
+	printf("MAX pos: %d\n", locate_num(*stack_a, find_max(*stack_a)));
+	printf("MIN pos: %d\n", locate_num(*stack_a, find_min(*stack_a)));
+	if (already_done(*stack_a) == 1)
+	{
+		printf("YA ESTA HECHO\n");
+		return ;
+	}
+	else if ((locate_num(*stack_a, find_min(*stack_a)) == 1) && ((locate_num(*stack_a, find_max(*stack_a)) == 2)))
+	{
+		sa(stack_a);
+		printf("ENTRA en la 1\n");
+	}
+	else if ((locate_num(*stack_a, find_min(*stack_a)) == 2) && ((locate_num(*stack_a, find_max(*stack_a)) == 0)))
+	{
+		sa(stack_a);
+		rra(stack_a);
+		printf("ENTRA en la 2\n");
+	}
+	else if ((locate_num(*stack_a, find_min(*stack_a)) == 1) && ((locate_num(*stack_a, find_max(*stack_a)) == 0)))
+	{
+		ra(stack_a);
+		printf("ENTRA en la 3\n");
+	}
+	else if ((locate_num(*stack_a, find_min(*stack_a)) == 0) && ((locate_num(*stack_a, find_max(*stack_a)) == 1)))
+	{
+		sa(stack_a);
+		ra(stack_a);
+		printf("ENTRA en la 4\n");
+	}
+	else if ((locate_num(*stack_a, find_min(*stack_a)) == 2) && ((locate_num(*stack_a, find_max(*stack_a)) == 1)))
+	{
+		rra(stack_a);
+		printf("ENTRA en la 5\n");
+	}
 }
 
-void    sort5(t_list **stack_a, t_list **stack_b, t_things *aux)
+void    sort_max10(t_list **stack_a, t_list **stack_b, t_things *aux)
 {
-    aux->size_a = ft_lstsize(*stack_a);
-    while(aux->size_a > 3)
-    {
-        while(locate_num(*stack_a, find_min(*stack_a)) != 0)
-            ra(stack_a);
-        pb(stack_a, stack_b, aux);
-    }
-    sort3(stack_a);
-    while(aux->size_b > 0)
-        pa(stack_a, stack_b, aux);
+	if(already_done(*stack_a) == 1)
+		return ;
+	aux->size_a = ft_lstsize(*stack_a);
+	while(aux->size_a > 3)
+	{
+		while(locate_num(*stack_a, find_min(*stack_a)) != 0)
+			{
+				if(locate_num(*stack_a, find_min(*stack_a)) < (ft_lstsize(*stack_a)/2))
+					ra(stack_a);
+				else
+					rra(stack_a);
+			}
+		pb(stack_a, stack_b, aux);
+	}
+	sort3(stack_a);
+	while(aux->size_b > 0)
+		pa(stack_a, stack_b, aux);
 }
 
 int max_bits(t_list *stack)
 {
-    int nbr_bits;
-    int max;
+	int nbr_bits;
+	int max;
 
-    nbr_bits = 0;
-    max = ft_lstsize(stack) - 1;
-    while((max >> nbr_bits) != 0)
-        nbr_bits++;
-    return(nbr_bits);
+	nbr_bits = 0;
+	max = ft_lstsize(stack) - 1;
+	while((max >> nbr_bits) != 0)
+		nbr_bits++;
+	return(nbr_bits);
 }
 
 void    radix(t_list **stack_a, t_list **stack_b, t_things *aux)
 {
-    int i;
-    int j;
-    int num;
-    aux->size= ft_lstsize(*stack_a);
+	if (already_done(*stack_a) == 1)
+		return ;
+	int i;
+	int j;
+	int num;
+	aux->size= ft_lstsize(*stack_a);
 
-    i = -1;
-    while (++i < max_bits(*stack_a))
-    {
-        j = -1;
-        while(++j < aux->size)
-        {
-            num = (*stack_a)->content;
+	i = -1;
+	while (++i < max_bits(*stack_a))
+	{
+		j = -1;
+		while(++j < aux->size)
+		{
+			num = (*stack_a)->content;
 
-            if((num >> i & 1) == 1)
-                ra(stack_a);
-            else
-                pb(stack_a, stack_b, aux);
-        }
-        while(ft_lstsize(*stack_b) != 0)
-            pa(stack_a, stack_b, aux);
-    }
+			if((num >> i & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b, aux);
+		}
+		while(ft_lstsize(*stack_b) != 0)
+			pa(stack_a, stack_b, aux);
+	}
  }

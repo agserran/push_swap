@@ -1,4 +1,14 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bubble.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/11 17:56:34 by agserran          #+#    #+#             */
+/*   Updated: 2023/04/11 18:03:01 by agserran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	*bubble(int *stack, int size)
 {
@@ -7,12 +17,12 @@ int	*bubble(int *stack, int size)
 	int	j;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		j = 0;
-		while(j < size - 1 - i)
+		while (j < size - 1 - i)
 		{
-			if(stack[j] > stack[j + 1])
+			if (stack[j] > stack[j + 1])
 			{
 				temp = stack[j];
 				stack[j] = stack[j + 1];
@@ -21,59 +31,57 @@ int	*bubble(int *stack, int size)
 			j++;
 		}
 		i++;
-	}	
-	return(stack);
+	}
+	return (stack);
 }
 
-int *sorter(int *stack, int *bubble, int size)
+int	*sorter(int *stack, int *bubble, int size)
 {
-    int i;
-    int *sorted;
-    int j;
-
-    i = 0;
-    sorted = ft_calloc(sizeof(int), size);
-    while (i < size)
-    {
-        j = 0;
-        while (j < size)
-        {
-            if (stack[i] == bubble[j])
-            {
-                sorted[i] = j;
-                break;
-            }
-            j++;
-        }
-        i++;
-    }
-    return (sorted);
-}
-
-void	repcheck(int *sorted, int size)
-{
-	int	num;
 	int	i;
+	int	*sorted;
 	int	j;
-	int	count;
 
 	i = 0;
-	j = 0;
-	while(i < size)
+	sorted = ft_calloc(sizeof(int), size);
+	while (i < size)
 	{
-		num = sorted[i];
-		count = 0;
-		while(j < size)
+		j = 0;
+		while (j < size)
 		{
-			if (num == sorted[j])
-				count++;
-			if (count > 1)
+			if (stack[i] == bubble[j])
 			{
-				ft_putstr("Numbers cannot repeat.\n");
-				exit(1);
+				sorted[i] = j;
+				break ;
 			}
-			j++;	
+			j++;
 		}
+		i++;
+	}
+	return (sorted);
+}
+
+void	back_check(int *array, int num, int i)
+{
+	i--;
+	while (i >= 0)
+	{
+		if (array[i] == num)
+		{
+			ft_putstr("NUMBERS CANNOT REPEAT.\n");
+			exit(1);
+		}
+		i--;
+	}
+}
+
+void	num_check(int *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		back_check(arr, arr[i], i);
 		i++;
 	}
 }

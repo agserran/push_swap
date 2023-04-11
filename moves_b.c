@@ -1,39 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves_b.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agserran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/11 17:56:56 by agserran          #+#    #+#             */
+/*   Updated: 2023/04/11 18:08:21 by agserran         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void    sb(t_list **stack_b)
+void	sb(t_list **stack_b)
 {
-    int  aux;
+    int	aux;
 
     if (*stack_b == NULL || (*stack_b)->next == NULL)
-        return ;
+		return ;
     aux = (*stack_b)->content;
     (*stack_b)->content = (*stack_b)->next->content;
     (*stack_b)->next->content = aux;
     write(1, "sb\n", 3);
 }
 
-void    rb(t_list **stack_b)
+void	rb(t_list **stack_b)
 {
     t_list  *aux1;
     t_list  *aux2;
 
     if (*stack_b == NULL || (*stack_b)->next == NULL)
-        return ;
+		return ;
     aux1 = (*stack_b)->next;
     aux2 = (*stack_b);
-    while(aux2->next != NULL)
-        aux2 = aux2->next;
+    while (aux2->next != NULL)
+		aux2 = aux2->next;
     aux2->next = (*stack_b);
     (*stack_b)->next = NULL;
     (*stack_b) = aux1;
     write(1, "rb\n", 3);
 }
 
-void    pb(t_list **stack_a, t_list **stack_b, t_things *aux)
+void	pb(t_list **stack_a, t_list **stack_b, t_things *aux)
 {
-    t_list  *temp;
+    t_list	*temp;
 
-    if(*stack_a == NULL)
+    if (*stack_a == NULL)
         return ;
     temp = (*stack_a);
     (*stack_a) = (*stack_a)->next;
@@ -44,15 +56,15 @@ void    pb(t_list **stack_a, t_list **stack_b, t_things *aux)
     write(1, "pb\n", 3);
 }
 
-void    rrb(t_list **stack_b)
+void	rrb(t_list **stack_b)
 {
-    t_list  *aux1;
-    t_list  *aux2;
+    t_list	*aux1;
+    t_list	*aux2;
 
     if (*stack_b == NULL || (*stack_b)->next == NULL)
-        return ;
+		return ;
     aux2 = (*stack_b);
-    while(aux2->next != NULL)
+    while (aux2->next != NULL)
     {
         aux1 = aux2;
         aux2 = aux2->next;
